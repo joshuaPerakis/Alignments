@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+.header {
+    background-color: #1e4261;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff
+
+
+}
+
+
+nav {
+    float: left;
+    background-color: #1e4261;
+    width: 20%;
+    height: 500px;
+    color: #ffffff;
+    padding: 20px;
+}
+
+li {
+    padding: 8px;
+    margin-bottom: 7px;
+    color: #ffffff;
+  }
+
+.article {
+    float: left;
+    padding: 20px;
+    width: 80%;
+}
