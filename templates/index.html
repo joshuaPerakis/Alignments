@@ -24,27 +24,7 @@
             color: #ffffff;
             width: 98%;
         }
-        /* .background {
-            width: 100%;
-            height: 100%;
-            min-width: 100%;
-            min-height: 100%;
-            position: relative;
-        }
 
-        .background::before {
-                background-image: url("../static/images/dna.jpg");
-                background-size: cover;
-                content: "";
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: -2;
-                opacity: 0.4;
-        } */
 
       .button {
       font-size: 12px;
@@ -99,24 +79,34 @@
         <h2 style="color: #ffffff">
             About:
         </h2>
-        <p style="background-color: #1e4261;color:#ffffff;">We were asked to implement an algorithm that we discussed in CS466: Introduction to Bioinformatics. Our team decided to recreate global, fitting, and local alignment using Flask as our primary framework.</p>
+        <p style="background-color: #1e4261;color:#ffffff;">We were asked to implement an algorithm that we discussed in CS466:
+          Introduction to Bioinformatics. Our team decided to recreate global,
+          fitting, and local alignment using Flask as our primary framework. </p>
 
         <!-- <div class="aDiv"> -->
         <h3 style="color: #ffffff">
             Alignments:
         </h3>
-        <p style="background-color: #1e4261;color:#ffffff;" >A global alignment of two strings w and v involves an end to end comparison of each character in each string. Comparisons of character will result in a score based on a scoring matrix. The alignment with the maximum score would correspond to the global alignment. </p>
+        <p style="background-color: #1e4261;color:#ffffff;" >A global alignment of two strings w and v involves an end to end comparison of each character in each string.
+           Comparisons of character will result in a score based on a scoring matrix. The alignment with the maximum score would correspond to the global alignment. </p>
 
-        <p style="background-color: #1e4261;color:#ffffff;" >A local alignment of two strings w and v involves comparing multiple global alignments on all substrings of w with all substrings of v and returning the maximum score from all these global alignments. A scoring matrix is once again used to determine a score for each character comparison. </p>
+        <p style="background-color: #1e4261;color:#ffffff;" >A local alignment of two strings w and v involves comparing
+          multiple global alignments on all substrings of w with all substrings of v and returning the maximum score from all these global alignments. A scoring matrix is once again used to
+          determine a score for each character comparison. </p>
 
-        <p style="background-color: #1e4261;color:#ffffff;">A fitting alignment of two strings w and v involves comparing multiple global alignments on all substrings of v with string w and returning the maximum score from all these global alignments. Just like in Global alignment, a scoring matrix is used to determine a score for each character comparison. </p>
+        <p style="background-color: #1e4261;color:#ffffff;">A fitting alignment of two strings w and v involves
+          comparing multiple global alignments on all substrings of v with string w and returning the maximum score from all these global alignments. Just like in Global alignment, a s
+          coring matrix is used to determine a score for each character comparison. </p>
       </div>
+        <div>
+          <em>*Input should only contain nucleotide bases of DNA e.g. A,C,T, or G</em>
+        </div>
         <div class="article">
         <h> Global Alignments: </h>
         <form method="POST">
-            <input name="glb_aln" value = "{{request.form['glb_aln']}}" size="50">
+            <input name="glb_aln" placeholder="Sequence 1" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['glb_aln']}}" size="50">
             <br>
-            <input name="glb_aln2" value = "{{request.form['glb_aln2']}}" size="50">
+            <input name="glb_aln2" placeholder="Sequence 2" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['glb_aln2']}}" size="50">
             <button type="submit" name ="action" value = "Global">Global Align </button>
             <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>
@@ -131,9 +121,9 @@
     <div class="article">
         <h> Local Alignments: </h>
         <form method="POST">
-            <input name="lcl_aln" value = "{{request.form['lcl_aln']}}"size="50">
+            <input name="lcl_aln" placeholder="Sequence 1" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['lcl_aln']}}"size="50">
             <br>
-            <input name="lcl_aln2" value = "{{request.form['lcl_aln2']}}" size="50">
+            <input name="lcl_aln2" placeholder="Sequence 2" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['lcl_aln2']}}" size="50">
             <button type="submit" name ="action" value = "Local">Local Align </button>
             <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>
@@ -148,9 +138,9 @@
     <div class="article">
         <h> Fitting Alignments: </h>
         <form method="POST">
-            <input name="fit_aln" value = "{{request.form['fit_aln']}}" size="50">
+            <input name="fit_aln" placeholder="Sequence 1" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['fit_aln']}}" size="50">
             <br>
-            <input name="fit_aln2" value = "{{request.form['fit_aln2']}}" size="50">
+            <input name="fit_aln2" placeholder="Sequence 2" title="Sequence should only contain characters A,C,T, or G! e.g. CAT" pattern="^[CAGTcagt]+$" value = "{{request.form['fit_aln2']}}" size="50">
             <button type="submit" name ="action" value = "Fitting">Fitting Align </button>
             <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>

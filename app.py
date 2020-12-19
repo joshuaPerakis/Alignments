@@ -22,8 +22,8 @@ def home():
 
 
         if request.form['action'] == "Global":
-            gl_v = request.form['glb_aln']
-            gl_w = request.form['glb_aln2']
+            gl_v = request.form['glb_aln'].upper()
+            gl_w = request.form['glb_aln2'].upper()
 
             g_score, g_alignment = g.global_align(gl_v,gl_w,delta)
 
@@ -32,8 +32,8 @@ def home():
             short = None
             ref = None
 
-            fit_v = request.form['fit_aln']
-            fit_w = request.form['fit_aln2']
+            fit_v = request.form['fit_aln'].upper()
+            fit_w = request.form['fit_aln2'].upper()
 
             if(len(fit_v) <= len(fit_w)):
                 short = fit_v
@@ -45,8 +45,8 @@ def home():
             # print(score,alignment)
 
         elif request.form['action'] == "Local":
-            lcl_v = request.form['lcl_aln']
-            lcl_w = request.form['lcl_aln2']
+            lcl_v = request.form['lcl_aln'].upper()
+            lcl_w = request.form['lcl_aln2'].upper()
 
             l_score, l_alignment = l.local_align(lcl_v,lcl_w,delta)
             # print(score,alignment)
