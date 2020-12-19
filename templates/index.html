@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>CS 466 Project</title>
     <link rel="stylesheet" href="../static/styles.css">
     <style>
         html,
         body {
-            width: 100%;
-            height: 100%;
+            width: 98%;
+            height: 98%;
+        }
+        .b-image {
+        background: url("../static/images/dna.jpg") no-repeat center;
+        background-size: cover;
+        position: relative;
         }
 
-        .background {
+        .header {
+            background-color: #1e4261;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            color: #ffffff;
+            width: 98%;
+        }
+        /* .background {
             width: 100%;
             height: 100%;
             min-width: 100%;
@@ -31,53 +44,124 @@
                 height: 100%;
                 z-index: -2;
                 opacity: 0.4;
-        }
+        } */
 
+      .button {
+      font-size: 12px;
+      font-family: "Lucida Grande";
+      text-decoration: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      color: white;
+      display: inline-block;
+      padding: 0.4em 1em;
+      border: 0.1em solid #3e65b3;
+      border-radius: 0.38em;
+      background-image: linear-gradient(#62a6ed, #4b78d6);
+    }
+    .button:hover {
+      background-image: linear-gradient(rgb(26,175,238), rgb(4,132,217));
+    }
+    .button:active {
+      background-image: linear-gradient(rgb(3,155,218), rgb(3,110,197));
+    }
+
+    .aDiv{width:90%;}
+
+    .Ldiv{width:200px;}
+    .Rdiv{width:200px;}
+
+    .Ldiv {
+        float: left;
+    }
+
+    .Rdiv {
+        float:right;
+    }
+
+    .article { 
+      float: left; 
+      padding: 20px; 
+      width: 80%; 
+    }
     </style>
 </head>
 
-
-<div class="background">
+<body class="b-image">
+<div>
 
     <div class="header">
-        <h1>CS 466 Project : Alignments</h1>
+        <h2>CS 466 Project : Alignments</h2>
     </div>
 
+    <div>
+      <div class="aDiv">
+        <h2 style="color: #ffffff">
+            About:
+        </h2>
+        <p style="background-color: #1e4261;color:#ffffff;">We were asked to implement an algorithm that we discussed in CS466: Introduction to Bioinformatics. Our team decided to recreate global, fitting, and local alignment using Flask as our primary framework.</p>
 
-        <h3>
-            What are alignments?
+        <!-- <div class="aDiv"> -->
+        <h3 style="color: #ffffff">
+            Alignments:
         </h3>
-        <p>Alignments are a way that... There are different kinds of alignments...</p>
+        <p style="background-color: #1e4261;color:#ffffff;" >A global alignment of two strings w and v involves an end to end comparison of each character in each string. Comparisons of character will result in a score based on a scoring matrix. The alignment with the maximum score would correspond to the global alignment. </p>
 
-    <div class="article">
+        <p style="background-color: #1e4261;color:#ffffff;" >A local alignment of two strings w and v involves comparing multiple global alignments on all substrings of w with all substrings of v and returning the maximum score from all these global alignments. A scoring matrix is once again used to determine a score for each character comparison. </p>
+
+        <p style="background-color: #1e4261;color:#ffffff;">A fitting alignment of two strings w and v involves comparing multiple global alignments on all substrings of v with string w and returning the maximum score from all these global alignments. Just like in Global alignment, a scoring matrix is used to determine a score for each character comparison. </p>
+      </div>
+        <div class="article">
         <h> Global Alignments: </h>
         <form method="POST">
-            <input name="glb_aln" size="50">
+            <input name="glb_aln" value = "{{request.form['glb_aln']}}" size="50">
             <br>
-            <input name="glb_aln2" size="50">
-            <input type="submit">
+            <input name="glb_aln2" value = "{{request.form['glb_aln2']}}" size="50">
+            <button type="submit" name ="action" value = "Global">Global Align </button>
+            <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>
-    </div>
+      </div>
+
+      <div class="Rdiv">
+        <h4 style="background-color: #1e4261;color:#ffffff;" value="{{g_score}}">SCORE:{{g_score}} </h4>
+        <h4 style="background-color: #1e4261;color:#ffffff;" value="{{g_alignment}}">ALIGNMENT:{{g_alignment}} </h4>
+      </div>
+
 
     <div class="article">
         <h> Local Alignments: </h>
         <form method="POST">
-            <input name="lcl_aln" size="50">
+            <input name="lcl_aln" value = "{{request.form['lcl_aln']}}"size="50">
             <br>
-            <input name="lcl_aln2" size="50">
-            <input type="submit">
+            <input name="lcl_aln2" value = "{{request.form['lcl_aln2']}}" size="50">
+            <button type="submit" name ="action" value = "Local">Local Align </button>
+            <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>
+    </div>
+
+    <div class="Rdiv">
+      <h4 style="background-color: #1e4261;color:#ffffff;" value= "{{l_score}}">SCORE: {{l_score}}</h4>
+      <h4 style="background-color: #1e4261;color:#ffffff;" value= "{{l_alignment}}">ALIGNMENT: {{l_alignment}}</h4>
+
     </div>
 
     <div class="article">
         <h> Fitting Alignments: </h>
         <form method="POST">
-            <input name="fit_aln" size="50">
+            <input name="fit_aln" value = "{{request.form['fit_aln']}}" size="50">
             <br>
-            <input name="fit_aln2" size="50">
-            <input type="submit">
+            <input name="fit_aln2" value = "{{request.form['fit_aln2']}}" size="50">
+            <button type="submit" name ="action" value = "Fitting">Fitting Align </button>
+            <!-- <p style= "float:right;text-align:right;margin-left:80px;">SCORE: </p> -->
         </form>
     </div>
 
+    <div class="Rdiv">
+      <h4 style="background-color: #1e4261;color:#ffffff;" value= "{{f_score}}">SCORE: {{f_score}} </h4>
+      <h4 style="background-color: #1e4261;color:#ffffff;" value= "{{f_alignment}}">ALIGNMENT:{{f_alignment}} </h4>
+
+    </div>
+  </div>
 </div>
+</body>
 </html>

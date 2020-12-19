@@ -3,16 +3,6 @@
   }
 
 
-.header {
-    background-color: #1e4261;
-    padding: 20px;
-    text-align: center;
-    font-size: 30px;
-    color: #ffffff
-
-
-}
-
 
 nav {
     float: left;
@@ -29,8 +19,8 @@ li {
     color: #ffffff;
   }
 
-.article {
-    float: left;
-    padding: 20px;
-    width: 80%;
+.article { 
+  float: left; 
+  padding: 20px; 
+  width: 80%; 
 }
